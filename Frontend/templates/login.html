@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - P&M</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}"> -->
+    <script src="{{ url_for('static',filename='js/login.js') }}" defer></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url("{{ url_for('static', filename='images/login_background.jpg') }}") no-repeat center center/cover;
+        }
+
+        .login-box {
+            display: flex;
+            width: 750px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.727);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Left side - Image */
+        .left-side {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #FAFAFA; /* Fallback color */
+        }
+
+        .left-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Right side - Login Form */
+        .right-side {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #3E2723;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            background: #9849b2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .login-btn:hover {
+            background: #5E3A2D;
+        }
+
+        .forgot-password {
+            display: block;
+            margin-top: 10px;
+            color: #777;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .forgot-password:hover {
+            color: #3E2723;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-box">
+        <!-- Left Side (Image) -->
+        <div class="left-side">
+            <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Logo">
+        </div>
+
+        <!-- Right Side (Login Form) -->
+        <div class="right-side">
+            <div class="login-container">
+                <h2>Login</h2>
+                <input type="text" id="email" placeholder="Email">
+                <input type="password" id="password" placeholder="Password">
+                <p id="error-message" style="color: red; font-size: 14px; margin-top: 10px;"></p>
+            
+                <button class="login-btn" onclick="validateLogin()">Log In</button>
+            </div>
+            
+        </div>
+    </div>
+
+    
+    
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+    <script src="{{ url_for('static',filename='js/index.js') }}" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P&M: Prose And Melody</title>
+    <style>
+        body {
+            background-color: rgb(158, 139, 117);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url("{{ url_for('static', filename='images/background.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* background: rgba(225,225,225,0.7); */
+            z-index: -1;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1, .tagline {
+            opacity: 0;
+            animation: fadeIn 2s ease-in forwards;
+        }
+
+        h1 {
+            color: #3E2723;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .tagline {
+            color: #C47022;
+            font-style: italic;
+            margin-top: 5px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Auth Buttons */
+        .auth-buttons {
+            display: flex;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            gap: 15px;
+            opacity: 0;
+            transform: translateX(200px); 
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .login-btn {
+            background: #9849b2;
+            color: white;
+
+        }
+
+        .signup-btn {
+            background: #9849b2;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(200px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    </div>
+
+    <div class="auth-buttons">
+        <button class="login-btn" onclick="window.location.href='/login'">Login</button>
+        <button class="signup-btn" onclick="window.location.href='/signup'">Sign Up</button>
+    </div>
+    
+
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                let authButtons = document.querySelector(".auth-buttons");
+                authButtons.style.opacity = "1";
+                authButtons.style.transform = "translateX(0)"; 
+                authButtons.style.transition = "transform 1.5s ease-out, opacity 1.5s ease-out";
+            }, 2500);
+        });
+    </script> -->
+</body>
+</html>

@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to right, #d8bfff, #fff);
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+header input {
+    width: 60%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Category Buttons */
+.categories button {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    margin: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* Banners */
+.banners {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.banner {
+    width: 45%;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.banner img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Featured Section */
+.featured {
+    margin: 20px 0;
+}
+
+.slider img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-nav button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}

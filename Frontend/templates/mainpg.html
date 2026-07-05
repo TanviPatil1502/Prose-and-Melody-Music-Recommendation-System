@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
+  <title>Prose & Melody</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='style/mainpg.css') }}" />
+  <script src="https://kit.fontawesome.com/34c30769cd.js" crossorigin="anonymous"></script>
+  <script src="{{ url_for('static',filename='js/mainpg.js') }}" defer></script>
+  <script>
+  const imgSrc = "{{ url_for('static', filename='images/playlistimg.jpg') }}";
+  </script>
+
+  <style>
+    body {
+    background-image: url("{{ url_for('static', filename='images/bg.jpg') }}");
+    background-size: cover;
+  }
+    </style>
+  <!-- <style>
+  .hidden {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-in-out;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .recommendation-card {
+      cursor: pointer;
+    }
+  </style> -->
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav_container">
+      <div class="nav_data">
+        <a href="#" class="logo"><i class="fa-solid fa-book-open"></i><span class="pm">Prose&Melody.</span></a>
+        <div class="search_container">
+          <form id="SearchBar" class="search_form">
+            <input class="search_input" id="searchInputText" type="search" placeholder="Search Book Name..." />
+            <button id="searchBtn" onclick="searchBook(event)"><i class="fa-solid fa-magnifying-glass" style="color: white;"></i></button>
+          </form>
+        </div>
+        <button class="profile_button" onclick="toggleMenu()">
+          <div class="profile_img"><img class="user_img" src="{{ url_for('static', filename='images/user-profile-icon.jpg') }}" /></div>
+        </button>
+        <div class="profile_sub_menu_wrap" id="subMenu">
+          <div class="profile_sub_menu">
+            <div class="user_info">
+              <img class="user_img_sub_menu" src="{{ url_for('static', filename='images/user-profile-icon.jpg') }}" />
+              <div class="user_name">
+              </div>
+            </div>
+            <hr />
+            <div class="logout"><a class="linking" onclick="logout()">Log Out</a></div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Filters -->
+  <div class="filters hidden" id="navbar">
+    <h3>Filters</h3>
+    <div class="vl"></div>
+    <input type="checkbox" id="filter1" /> <pre> Instrumental</pre>
+    <div class="vl"></div>
+    <input type="checkbox" id="filter2" checked /> <pre> Lyrical</pre>
+    <div class="vl"></div>
+    <div class="dropdown" id="dropDown">
+      <select class="selectbox" id="language" name="language">
+        <option value="English">English</option>
+        <option value="Hindi">Hindi</option>
+        <option value="Spanish">Spanish</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Music Player Section -->
+  <div class="player_header">
+    <div class="title">
+      <p class="text" id="titleOfPage">
+        
+      </p>
+    </div>
+  </div>
+
+  <div class="music_player_wrap hidden">
+    <div class="music_player youtube">
+      <h4>YouTube</h4>
+      <div class="song_info"><div class="player_pic"><img src="{{ url_for('static', filename='images/yt_music_logo.jpg') }}" class="active" /></div></div>
+
+      <div class="player_controls">
+        <div class="buttons1">
+          <button id="yt-prev-btn" onclick="goBack(event,'youtube')"><i class="fa-solid fa-backward"></i></button>
+          <button onclick="youtubePlayButton(event)"><i class="fa-solid fa-play"></i></button>
+          <button id="yt-next-btn" onclick="playlist(event,'youtube')"><i class="fa-solid fa-forward"></i></button>
+        </div>
+        <div class="buttons2">
+          <button onclick="SaveFavourite(event,'youtube')">
+            <i class="fa-regular fa-heart"></i>
+            <!-- <i class="fa-solid fa-heart"></i> -->
+            <h5>Favorite</h5>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="music_player spotify">
+      <h4>Spotify</h4>
+      <div class="song_info"><div class="player_pic"><img src="{{ url_for('static', filename='images/Spotify_App_Logo.png') }}" class="active" /></div></div>
+      <div class="player_controls">
+        <div class="buttons1">
+          <button id="sp-prev-btn" onclick="goBack(event,'spotify')"><i class="fa-solid fa-backward"></i></button>
+          <button onclick="spotifyPlayButton(event)"><i class="fa-solid fa-play"></i></button>
+          <button id="sp-next-btn" onclick="playlist(event,'spotify')"><i class="fa-solid fa-forward"></i></button>
+        </div>
+        <div class="buttons2">
+          <button onclick="SaveFavourite(event,'spotify')">
+            <i class="fa-regular fa-heart"></i>
+            <!-- <i class="fa-solid fa-heart"></i> -->
+            <h5>Favorite</h5></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recommendations Section -->
+  <div class="bottom_container hidden" id="recommendations">
+    <div class="recommendations">
+      <h3>Surprise Reccomendations</h3>
+      <hr />
+      <h4>YouTube</h4>
+      <div class="yt_recs">
+        
+      </div>
+      <h4>Spotify</h4>
+      <div class="sp_recs">
+       
+      </div>
+    </div>
+
+    <div class="recents">
+      <h3>Recents</h3><hr />
+      <div class="recent_songs" id="recentsList">
+        <!-- <div class="recent1"><a href="#">The Alice Network</a><button><i class="fa-solid fa-play"></i></button></div>
+        <div class="recent1"><a href="#">Pachinko</a><button><i class="fa-solid fa-play"></i></button></div> -->
+      </div>
+    </div>
+
+    <div class="saved_favs">
+      <h3>Favorites</h3><hr />
+      <div class="favorite_songs" id="favSongs">
+
+      </div>
+    </div>
+  </div>
+  
+  <footer class="disclamer">
+    <span>Note: Religious Texts will not be taken as input</span>
+  </footer>
+
+  
+
+</body>
+</html>

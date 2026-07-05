@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - P&M</title>
+    <script src="{{ url_for('static',filename='js/sign.js') }}" defer></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url("{{ url_for('static', filename='images/login_background.jpg') }}") no-repeat center center/cover;
+        }
+
+        .signup-box {
+            display: flex;
+            width: 800px;
+            height: 370px;
+            background: rgba(255, 255, 255, 0.744);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Left side - Image */
+        .left-side {
+            flex: 1;
+            
+            background: url("{{ url_for('static', filename='images/logo.jpeg') }}") no-repeat center center/contain;
+            background-size: 100%;
+        }
+
+        /* Right side - Signup Form */
+        .right-side {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .signup-container {
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .signup-container h2 {
+            margin-bottom: 20px;
+            color: #3E2723;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: -5px;
+            display: none;
+        }
+
+        .signup-btn {
+            width: 100%;
+            padding: 10px;
+            background: #9849b2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .signup-btn:hover {
+            background: #5E3A2D;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="signup-box">
+        <!-- Left Side (Image) -->
+        <div class="left-side"></div>
+
+        <!-- Right Side (Signup Form) -->
+        <div class="right-side">
+            <div class="signup-container">
+                <h2>Sign Up</h2>
+                <input type="text" placeholder="Full Name" id="fullname" required>
+                <input type="email" placeholder="Email" id="email" required>
+                <input type="password" placeholder="Password" id="password" required>
+                <input type="password" placeholder="Confirm Password" id="confirm-password" required>
+                <p class="error-message" id="error-message">Passwords do not match!</p>
+                <button class="signup-btn" onclick="validateSignup()">Create Account</button>
+            </div>
+        </div>
+    </div>
+
+    
+
+</body>
+</html>
