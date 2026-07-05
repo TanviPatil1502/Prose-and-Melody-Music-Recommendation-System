@@ -67,9 +67,9 @@ This project is **not licensed for reuse or distribution**.
 
 ## Screenshots 
 
-![First Page](PandM/OutputScreenShots/FirstPage.jpg)
-![Main Page](PandM/OutputScreenShots/MainPage.jpg)
-![Sign Up Page](PandM/OutputScreenShots/SignUpPage.jpg)
+![First Page](OutputScreenShots/FirstPage.jpg)
+![Main Page](OutputScreenShots/MainPage.jpg)
+![Sign Up Page](OutputScreenShots/SignUpPage.jpg)
 
 
 ---
